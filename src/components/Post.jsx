@@ -1,9 +1,16 @@
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 
 import styles from './Post.module.css';
 
-export function Post({ author }) {
+export function Post({ author, publishedAt }) {
+  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+    locale: ptBR,
+  })
+
   return(
     <article className={styles.post}>
       <header>
@@ -15,8 +22,8 @@ export function Post({ author }) {
           <span>{author.role}</span>
         </div>
 
-        <time title='20 de março às 12:19' dateTime='2024-03-20 12:19:00'>
-          Publicado há 1h
+        <time title={publishedDateFormatted} dateTime='2024-03-20 12:19:00'>
+          
         </time>
       </header>
 
