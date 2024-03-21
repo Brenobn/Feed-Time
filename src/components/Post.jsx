@@ -3,19 +3,21 @@ import { Comment } from './Comment';
 
 import styles from './Post.module.css';
 
-export function Post() {
+export function Post({ author }) {
   return(
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src="http://github.com/Brenobn.png" />
+          <Avatar src={author.avatarUrl} />
         </div>
         <div className={styles.authorInfo}> 
-          <strong>Breno Leonardo</strong>
-          <span>Web Developer</span>
+          <strong>{author.name}</strong>
+          <span>{author.role}</span>
         </div>
 
-        <time title='20 de março às 12:19' dateTime='2024-03-20 12:19:00'>Publicado há 1h</time>
+        <time title='20 de março às 12:19' dateTime='2024-03-20 12:19:00'>
+          Publicado há 1h
+        </time>
       </header>
 
       <div className={styles.content}>
